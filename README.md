@@ -41,7 +41,7 @@ This web application allows users to authenticate with their Spotify accounts, s
      ```bash
      python setup.py install
 
-3. Get the api key and secret from [spotify developers](https://developer.spotify.com/)
+3. Get the API key and secret from [spotify developers](https://developer.spotify.com/) and change it in app.py
 
 ## Usage
 1. Run the app by:
@@ -51,3 +51,4 @@ This web application allows users to authenticate with their Spotify accounts, s
 3. Click the "Login with Spotify" button to authenticate with your Spotify account
 4. Go back to the terminal, and give the playlist to download
 5. The default download folder is Downloads
+
