@@ -25,7 +25,7 @@ def redirectPage():
     token_info=spotify_oauth.get_access_token(code)
     session[TOKEN_INFO] = token_info
 
-
+    
     return redirect(url_for('gettracks',_external=True))
 
 
@@ -37,22 +37,27 @@ def gettracks():
         print("User not logged in")
         return redirect("/")
     sp=spotipy.Spotify(auth=token_info['access_token'])
-    playlist_id=getPlaylistId(sp)[0]
+    playlist_id=getPlaylistId(sp)
+    
+    names=list(playlist_id.keys())
+    for i in range(len(names)):
+        print(f"{i}:{names[i]}")
+    choice=int(input("Give the corresponding number to the playlist: "))
+    play=playlist_id[names[choice]]
     songs=[]
-    for i in sp.playlist_items(playlist_id,limit=20, offset=0)['items']:
+    for i in sp.playlist_items(play,limit=20, offset=0)['items']:
         songs.append(i['track']['name'])
-    df = pd.DataFrame(songs, columns=["song names"]) 
-    df.to_csv('songs.csv', index=False)
- 
+    
+    DownloadVideosFromTitles(songs)
     return "Done"
     
 
 def getPlaylistId(sp):
     
-    playlist_id= []
+    playlist_id= {}
     
     for i in sp.current_user_playlists(limit=50, offset=0)['items']:
-        playlist_id.append(str(i['id']))
+        playlist_id[str(i['name'])]=(str(i['id']))
     return playlist_id
 
 
@@ -69,8 +74,10 @@ def get_token():
 
 def create_spotify_oauth():
     return SpotifyOAuth(
-        client_id= "########",
-        client_secret= "#######",
+        client_id= '4fb684bca2cc47f2ac037aad5327f1cd',
+        client_secret= 'c9ba404a0ae247de8047549d58002ce8',
         redirect_uri=url_for('redirectPage',_external=True),
         scope= 'user-library-read'
     )
+if __name__ == '__main__':
+    app.run(debug=False)

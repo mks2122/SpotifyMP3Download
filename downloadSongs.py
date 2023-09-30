@@ -50,10 +50,5 @@ def ScrapeVidId(query):
     video_ids = re.findall(r"watch\?v=(\S{11})", response.text)
     return video_ids[0]
 
-def __main__():
 
-	data = pandas.read_csv('songs.csv')
-	data = data['song names'].tolist()
-	print("Found ", len(data), " songs!")
-	DownloadVideosFromTitles(data)
-__main__()
+
