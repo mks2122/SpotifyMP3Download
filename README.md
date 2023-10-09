@@ -27,7 +27,7 @@ This web application allows users to authenticate with their Spotify accounts, s
 - Python 3.7 or higher
 - Flask 2.0 or higher
 - [Spotipy](https://github.com/plamere/spotipy)
-- [YouTube Data API v3 Key](https://developers.google.com/youtube/registering_an_application)
+- [Spotify Developer API Key](https://developer.spotify.com/)
 
 ### Installation
 
@@ -41,7 +41,7 @@ This web application allows users to authenticate with their Spotify accounts, s
      ```bash
      python setup.py install
 
-3. Get the API key and secret from [spotify developers](https://developer.spotify.com/) and change it in app.py
+3. Get the API key and secret from [spotify developers](https://developer.spotify.com/) and change it in app.py Line 10
 
 ## Usage
 1. Run the app by:
