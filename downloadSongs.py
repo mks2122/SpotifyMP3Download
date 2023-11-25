@@ -39,7 +39,10 @@ def DownloadVideosFromIds(lov):
 		'outtmpl': SAVE_PATH + '/%(title)s.%(ext)s',
 	}
 	with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-	    ydl.download(lov)
+		try:
+				ydl.download(lov)
+		except:
+			pass
 
 
 def ScrapeVidId(query):
