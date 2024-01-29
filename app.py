@@ -7,7 +7,7 @@ from downloadSongs import DownloadVideosFromTitles
 
 app=Flask(__name__)
 
-app.secret_key="##############"
+app.secret_key="9bb56480ff6a4cf5a40fb173bab7fb26"
 app.config['SESSION_COOKIE_NAME']='sdmp3 cookie'
 TOKEN_INFO="token_info"
 
