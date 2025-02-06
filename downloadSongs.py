@@ -48,9 +48,10 @@ def DownloadVideosFromIds(lov):
 def ScrapeVidId(query):
 	try:
 		url = f"https://www.youtube.com/results?search_query={query}"
+		print(f"Scraping {query}")
 		query = url.replace(" ", "+")
-		response = requests.get(url)
-		video_ids = re.findall(r"watch?v=(\S{11})", response.text)
+		response = requests.get(query)
+		video_ids = re.findall(r"/watch\?v=([a-zA-Z0-9_-]+)", response.text)
 		return video_ids[0]
 	except :
 		print("could not get the video id, ", query)
